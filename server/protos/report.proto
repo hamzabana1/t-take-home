@@ -1,0 +1,46 @@
+syntax = "proto3";
+
+package report;
+
+service ReportService {
+  rpc CreateReport (CreateReportRequest) returns (Report) {}
+  rpc GetReport (GetReportRequest) returns (Report) {}
+  rpc ListReports (ListReportsRequest) returns (ListReportsResponse) {}
+  rpc UpdateReport (UpdateReportRequest) returns (Report) {}
+  rpc DeleteReport (DeleteReportRequest) returns (DeleteReportResponse) {}
+}
+
+message CreateReportRequest {
+  string name = 1;
+  string layout = 2;
+}
+
+message GetReportRequest {
+  string id = 1;
+}
+
+message ListReportsRequest {}
+
+message ListReportsResponse {
+  repeated Report reports = 1;
+}
+
+message UpdateReportRequest {
+  string id = 1;
+  string name = 2;
+  string layout = 3;
+}
+
+message DeleteReportRequest {
+  string id = 1;
+}
+
+message DeleteReportResponse {
+  bool success = 1;
+}
+
+message Report {
+  string id = 1;
+  string name = 2;
+  string layout = 3;
+}
